@@ -6,7 +6,9 @@ const ManageOrder = () => {
     useEffect(()=>{
         fetch('https://peaceful-reaches-09410.herokuapp.com/myOrders')
         .then(res=>res.json())
-        .then(data=>setOrder(data))
+        .then(data=>
+            {setOrder(data)
+            setUpdate("approved")})
     },[])
 
     // Update:
@@ -20,9 +22,9 @@ const ManageOrder = () => {
        })
        .then(res=>res.json())
        .then(result=>{
-           
+           console.log('hello')
            if(result.modifiedCount===0){
-              alert('Updated successfully')
+              alert('approved')
            }
        })
       }
