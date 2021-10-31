@@ -11,7 +11,7 @@ const ManageOrder = () => {
 
     // Update:
       const handleUpdate=(id,data)=>{
-       fetch(`http://localhost:5000/update/${id}`,{
+       fetch(`https://peaceful-reaches-09410.herokuapp.com/update/${id}`,{
            method:"PUT",
            headers:{
                "content-type":'application/json'
@@ -19,10 +19,10 @@ const ManageOrder = () => {
            body:JSON.stringify(data)
        })
        .then(res=>res.json())
-       .then(result=>{setUpdate(result)
+       .then(result=>{
            
            if(result.modifiedCount===0){
-              
+              alert('Updated successfully')
            }
        })
       }

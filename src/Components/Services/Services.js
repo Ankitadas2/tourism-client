@@ -23,7 +23,7 @@ const Services = () => {
         const data=services[index]
         data.status="pending"
         data.email= user.email
-        console.log(data)
+        
         
         fetch("https://peaceful-reaches-09410.herokuapp.com/addOrder",{
             method:"POST",
@@ -57,27 +57,7 @@ const Services = () => {
             }
         </div>
        </div>
-//        <div id="service">
-           
-//            <h1 className="text-center text-success">Our Services</h1>
-           
-            
-//             {
-//                 services.map((service,index)=>
-               
-//                 <div className="service pb-5">
-           
-//                 <img className="w-75 pt-4 px-5 mx-4 my-4" src={img} alt="" />
-//                 <h2 className="px-3 text-center">Destination:{name}</h2>
-//                 <h3>Price: <span>$</span>{price}</h3>
-//                 <p className="px-5">{description}</p>
-//                   <Link to={`/booking/${_id}`}>
-//                 <button className="btn btn-primary px-5 rounded mx-5 me-5 mt-4 pe-4 w-50 ps-4">Book now</button>
-//                 </Link> 
-                
-//             </div>
-// }
-//      </div>       
+       
             
        
       

@@ -15,7 +15,7 @@ const email=user.email
    .then(res=>res.json())
    .then(data=>setOrders(data))
 
-    },[])
+    },[orders])
     const handleDelete=(id)=>{
         const proceed=window.confirm('Are you sure,You want to delete?')
         if(proceed){
@@ -42,7 +42,7 @@ const email=user.email
             <div>
                 <div className="service-container">
                     {
-                    orders.map(service=>
+                    orders?.map(service=>
                         <div className="service pb-5">
            
                 <img className="w-75 pt-4 px-5 mx-4 my-4" src={service.img} alt="" />

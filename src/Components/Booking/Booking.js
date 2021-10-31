@@ -62,10 +62,10 @@ if(result.insertedId){
         <h1>{use?.name}</h1>
         <h3>Price: <span>$</span> {use?.price}</h3>
         <p>{use?.description}</p>
-        <Link to="/order">
-        <button>Proceed order</button>
+        {/* <Link to="/services">
+        <button className="bg-danger text-light px-3 py-2">Proceed order</button>
         </Link>
-       
+        */}
        
         </div>
        
