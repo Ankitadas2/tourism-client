@@ -5,7 +5,7 @@ const AddNewService = () => {
     const { register, handleSubmit } = useForm();
   const onSubmit = data => {
    
-      axios.post('http://localhost:5000/services',data)
+      axios.post('https://peaceful-reaches-09410.herokuapp.com/services',data)
       .then(res=>{
           if(res.data.insertedId){
             console.log(data);
@@ -18,11 +18,12 @@ const AddNewService = () => {
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
             <input
-                {...register("title")}
-                placeholder="title"
+                {...register("name")}
+                placeholder="name"
                 className="p-2 m-2 w-50"
               />
               <br />
+            
               <input
                 {...register("description")}
                 placeholder="Description"

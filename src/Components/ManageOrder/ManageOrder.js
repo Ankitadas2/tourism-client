@@ -2,16 +2,37 @@ import React, { useEffect, useState } from 'react';
 
 const ManageOrder = () => {
     const [order,setOrder]=useState([])
+    const [update,setUpdate]=useState('')
     useEffect(()=>{
-        fetch('http://localhost:5000/myOrders')
+        fetch('https://peaceful-reaches-09410.herokuapp.com/myOrders')
         .then(res=>res.json())
         .then(data=>setOrder(data))
     },[])
+
+    // Update:
+      const handleUpdate=(id,data)=>{
+       fetch(`http://localhost:5000/update/${id}`,{
+           method:"PUT",
+           headers:{
+               "content-type":'application/json'
+           },
+           body:JSON.stringify(data)
+       })
+       .then(res=>res.json())
+       .then(result=>{setUpdate(result)
+           
+           if(result.modifiedCount===0){
+              
+           }
+       })
+      }
+
+
    const handleManageOrder=(id)=>{
        const proceed=window.confirm('Are you sure,You want to delete?')
        if(proceed){
-
-        fetch(`http://localhost:5000/myOrders/${id}`,{
+        
+        fetch(`https://peaceful-reaches-09410.herokuapp.com/myOrders/${id}`,{
             method:"DELETE"
         })
         .then(res=>res.json())
@@ -40,8 +61,10 @@ const ManageOrder = () => {
                     <h2 className="px-3 text-center">Destination:{service.name}</h2>
                     <h3>Price: <span>$</span>{service.price}</h3>
                     <p className="px-5">{service.description}</p>
+                    
+                    <h2 className="text-danger mb-3">{service.status}</h2>
                     <button onClick={()=>handleManageOrder(service._id)} className="bg-warning px-4 py-2">Delete</button>
-                      
+                      <button className="bg-primary mx-3 px-4 py-2" onClick={()=>handleUpdate(service._id)}>Update</button>
                     
                 </div>
             

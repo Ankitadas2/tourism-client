@@ -13,7 +13,7 @@ const Booking = () => {
     
   const { register, handleSubmit,reset } = useForm();
   const onSubmit = data => {
-    fetch('http://localhost:5000/newOrder',{
+    fetch('https://peaceful-reaches-09410.herokuapp.com/newOrder',{
       method:"POST",
       headers:{
         'content-type':'application/json'
@@ -31,7 +31,7 @@ if(result.insertedId){
     
   }
   useEffect(()=>{
-        fetch(`http://localhost:5000/services/${serviceId}`)
+        fetch(`https://peaceful-reaches-09410.herokuapp.com/services/${serviceId}`)
          .then(res=>res.json())
         .then(data=>setUser(data))
     },[])
@@ -52,15 +52,19 @@ if(result.insertedId){
 <input placeholder="Address" defaultValue="" {...register("address")} />
 <input placeholder="City" defaultValue="" {...register("city")} />
 <input placeholder="phone number" defaultValue="" {...register("phone")} />
+<input  defaultValue="" {...register("phone")} />
 
 <input type="submit" />
+
 </form>
         <div className=" mb-5 my-4 pb-5">
         <img className="w-50" src={use?.img} alt="" />
         <h1>{use?.name}</h1>
         <h3>Price: <span>$</span> {use?.price}</h3>
         <p>{use?.description}</p>
-        
+        <Link to="/order">
+        <button>Proceed order</button>
+        </Link>
        
        
         </div>
